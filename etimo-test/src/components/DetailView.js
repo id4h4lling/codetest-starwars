@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams, useNavigate } from "react-router-dom";
+import backgroundTwo from "../images/bakground_2.jpg";
 
 export const DetailView = () => {
   const { id } = useParams();
@@ -12,7 +13,7 @@ export const DetailView = () => {
   };
 
   useEffect(() => {
-    fetch(`https://swapi.dev/api/people/${id}/`)
+    fetch(`https://swapi.dev/api/people/${id}`)
       .then((res) => res.json())
       .then(
         (json) => {
@@ -24,21 +25,59 @@ export const DetailView = () => {
 
   return (
     <Container>
-      {detail && (
-        <div>
-          <p>{detail.eye_color}</p>
-        </div>
-      )}
+      <DetailContainer>
+        {detail && (
+          <div>
+            <h2>{detail.name}</h2>
+            <p>
+              Is a perfect match for you. {detail.name} eyes are{" "}
+              {detail.eye_color} and hair is {detail.hair_color}.
+            </p>
+            <p>
+              {detail.name} was born in {detail.birth_year}. It's so nice that
+              you have that in common. You never now what you're missing, reach
+              out to night by shouting {detail.name} three times to the stars.
+            </p>
+            <p></p>
+          </div>
+        )}
+      </DetailContainer>
       <GoBackButton onClick={onBackButtonClick}>‹ Go back</GoBackButton>
-      <div>Balloba</div>
     </Container>
   );
 };
 
 const Container = styled.div`
-  width: 100vh;
+  background-image: url(${backgroundTwo});
+  width: 100vw;
   height: 100vh;
-  background-color: red;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between; //vertical alignment because of flex direction column
+  align-items: center; //horizontal alignment because of flex direction column
+`;
+
+const DetailContainer = styled.div`
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+
+  width: 30%;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin-top: 40px;
+
+  h2 {
+    color: #ac8725;
+  }
+  p {
+    color: #3a93ae;
+  }
 `;
 
 const GoBackButton = styled.button`
@@ -52,12 +91,11 @@ const GoBackButton = styled.button`
   align-items: center;
   font-weight: 900;
   text-decoration: none;
-  left: 40px;
   top: 20px;
+  left: 30px;
   appearance: none;
   border: none;
   background-color: transparent;
-  transition: 0.3s;
   font-size: 20px;
   cursor: pointer;
 `;

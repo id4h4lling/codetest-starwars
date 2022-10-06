@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "STARWARS";
+  src: local("STARWARS"), url(./fonts/STARWARS.woff) format("woff");
+}
 .App {
   text-align: center;
 }
