@@ -3,46 +3,56 @@ import styled from "styled-components";
 import { useParams, useNavigate } from "react-router-dom";
 import backgroundTwo from "../images/bakground_2.jpg";
 
+import { useFetch } from "./useFetch";
+
 export const DetailView = () => {
   const { id } = useParams();
-  const [detail, setDetail] = useState();
+  // const [detail, setDetail] = useState();
+  const detail = useFetch(`https://swapi.dev/api/people/${id}`);
   const navigate = useNavigate();
 
   const onBackButtonClick = () => {
     navigate(-1);
   };
 
-  useEffect(() => {
-    fetch(`https://swapi.dev/api/people/${id}`)
-      .then((res) => res.json())
-      .then(
-        (json) => {
-          setDetail(json);
-        },
-        [id]
-      );
-  });
+  // useEffect(() => {
+  //   fetch(`https://swapi.dev/api/people/${id}`)
+  //     .then((res) => res.json())
+  //     .then(
+  //       (json) => {
+  //         setDetail(json);
+  //       },
+  //       [id]
+  //     );
+  // });
 
   return (
     <Container>
       <DetailContainer>
         {detail && (
           <div>
-            <h2>{detail.name}</h2>
+            <h2>
+              Your pick was <span className="color">{detail.name}</span>
+            </h2>
             <p>
-              Is a perfect match for you. {detail.name} eyes are{" "}
-              {detail.eye_color} and hair is {detail.hair_color}.
+              That is a truley perfect match for you!{" "}
+              <span className="bold">{detail.name}</span> eyes are{" "}
+              <span className="bold"> {detail.eye_color}</span> and hair is{" "}
+              <span className="bold">{detail.hair_color}</span>.
             </p>
             <p>
-              {detail.name} was born in {detail.birth_year}. It's so nice that
-              you have that in common. You never now what you're missing, reach
-              out to night by shouting {detail.name} three times to the stars.
+              <span className="bold">{detail.name}</span> was born in{" "}
+              <span className="bold"> {detail.birth_year}</span>, it's so nice
+              that you have that in common. You never know what you're missing,
+              reach out to night by shouting{" "}
+              <span className="bold">{detail.name}</span> three times to the
+              stars.
             </p>
             <p></p>
           </div>
         )}
       </DetailContainer>
-      <GoBackButton onClick={onBackButtonClick}>‹ Go back</GoBackButton>
+      <GoBackButton onClick={onBackButtonClick}>‹ Pick another</GoBackButton>
     </Container>
   );
 };
@@ -70,13 +80,24 @@ const DetailContainer = styled.div`
   width: 30%;
   border-radius: 10px;
   padding: 10px 20px;
-  margin-top: 40px;
+  margin-top: 20%;
 
   h2 {
-    color: #ac8725;
+    color: white;
+    text-shadow: 2px 2px black;
   }
   p {
-    color: #3a93ae;
+    color: white;
+    line-height: 30px;
+    text-shadow: 2px 2px black;
+  }
+
+  .color {
+    color: darkorange;
+  }
+
+  .bold {
+    font-weight: bold;
   }
 `;
 
@@ -98,4 +119,8 @@ const GoBackButton = styled.button`
   background-color: transparent;
   font-size: 20px;
   cursor: pointer;
+
+  &:hover {
+    color: red;
+  }
 `;

@@ -1,34 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import background from "../images/background-star-wars.jpg";
+import logo from "../logo/star-wars-4.svg";
+import { useFetch } from "./useFetch";
 
 export const CharactersList = () => {
-  const [characters, setcharacters] = useState([]);
+  const characters = useFetch("https://swapi.dev/api/people/");
 
-  useEffect(() => {
-    fetch("https://swapi.dev/api/people/")
-      .then((res) => res.json())
-      .then((json) => {
-        setcharacters(json.results);
-      });
-  }, []);
+  // const [characters, setcharacters] = useState([]);
+
+  // useEffect(() => {
+
+  //   fetch("https://swapi.dev/api/people/")
+  //     .then((res) => res.json())
+  //     .then((json) => {
+  //       setcharacters(json.results);
+  //     });
+
+  // }, []);
 
   return (
     <Container>
       <Header>
-        <h2>Dating a</h2> <h1>Starwars Characters</h1>
+        <h2>Dating a</h2>
+        <img src={logo} alt="starwars logo" />
+        <h1>Character</h1>
       </Header>
       <CharactersContainer>
-        {characters.map((results) => (
-          <Link
-            key={results.name}
-            to={results.url.replace("https://swapi.dev/api", "")}
-          >
-            <p>{results.name}</p>
-          </Link>
-        ))}
+        {characters &&
+          characters.results.map((results) => (
+            <Link
+              key={results.name}
+              to={results.url.replace("https://swapi.dev/api/", "")}
+            >
+              <p>{results.name}</p>
+            </Link>
+          ))}
       </CharactersContainer>
     </Container>
   );
@@ -45,7 +54,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between; //vertical alignment because of flex direction column
-  align-items: center; //horizontal alignment because of flex direction column
+  align-items: center; //horizontal alignment because of flex direction column */ */
 `;
 
 const Header = styled.div`
@@ -53,36 +62,39 @@ const Header = styled.div`
   flex-direction: column;
   align-items: center;
 
-  h1 {
-    font-size: 40px;
-    color: red;
-    padding: 10px;
-    font-family: "STARWARS";
+  h2 {
+    color: white;
+    font-size: 20px;
+    text-shadow: 2px 2px black;
+    margin-bottom: 6px;
   }
 
-  h2 {
-    color: red;
-    font-size: 20px;
+  h1 {
+    font-size: 40px;
+    color: white;
+    text-shadow: 2px 2px black;
+    margin-top: 200px;
   }
 `;
 
 const CharactersContainer = styled.div`
   background: rgba(0, 0, 0, 0.5);
+  width: 375px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 
-  align-items: center;
-  margin: 30px;
-  width: 50%;
   border-radius: 10px;
-  padding: 40px;
 
   a {
     font-size: 20px;
-    color: red;
+    color: white;
+    padding: 20px;
+    text-shadow: 2px 2px black;
     text-decoration: none;
     &:hover {
-      color: blue;
+      color: dodgerblue;
     }
   }
 `;
