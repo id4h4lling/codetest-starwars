@@ -52,9 +52,15 @@ export const DetailView = () => {
           </div>
         )}
       </DetailContainer>
-      <GoBackButton onClick={onBackButtonClick}>‹ Pick another</GoBackButton>
+      <GoBackButton onClick={onBackButtonClick}> Pick another</GoBackButton>
     </Container>
   );
+};
+
+const devices = {
+  mobile: "(min-width: 375px)",
+  tablet: "(min-width: 768px)",
+  desktop: "(min-width: 1025px)",
 };
 
 const Container = styled.div`
@@ -67,9 +73,8 @@ const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-
-  justify-content: space-between; //vertical alignment because of flex direction column
-  align-items: center; //horizontal alignment because of flex direction column
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const DetailContainer = styled.div`
@@ -77,17 +82,19 @@ const DetailContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 30%;
+  width: 40%;
   border-radius: 10px;
   padding: 10px 20px;
-  margin-top: 20%;
+  margin-top: 25%;
 
   h2 {
+    font-size: 20px;
     color: white;
     text-shadow: 2px 2px black;
   }
   p {
     color: white;
+    font-size: 15px;
     line-height: 30px;
     text-shadow: 2px 2px black;
   }
@@ -99,6 +106,19 @@ const DetailContainer = styled.div`
   .bold {
     font-weight: bold;
   }
+
+  @media ${devices.desktop} {
+    width: 30%;
+    margin-top: 20%;
+
+    h2 {
+      font-size: 30px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+  }
 `;
 
 const GoBackButton = styled.button`
@@ -108,6 +128,7 @@ const GoBackButton = styled.button`
 
   position: absolute;
   display: inline-flex;
+
   color: #fff;
   align-items: center;
   font-weight: 900;

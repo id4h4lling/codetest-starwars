@@ -53,8 +53,8 @@ const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between; //vertical alignment because of flex direction column
-  align-items: center; //horizontal alignment because of flex direction column */ */
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const Header = styled.div`
@@ -73,7 +73,7 @@ const Header = styled.div`
     font-size: 40px;
     color: white;
     text-shadow: 2px 2px black;
-    margin-top: 200px;
+    margin-top: 3px;
   }
 `;
 
@@ -84,7 +84,7 @@ const CharactersContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-
+  margin: 12rem;
   border-radius: 10px;
 
   a {
