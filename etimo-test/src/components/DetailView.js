@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams, useNavigate } from "react-router-dom";
 import backgroundTwo from "../images/bakground_2.jpg";
@@ -94,7 +94,7 @@ const DetailContainer = styled.div`
   }
   p {
     color: white;
-    font-size: 15px;
+    font-size: 18px;
     line-height: 30px;
     text-shadow: 2px 2px black;
   }
