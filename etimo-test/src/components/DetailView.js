@@ -82,10 +82,10 @@ const DetailContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  width: 40%;
+  width: 300px;
   border-radius: 10px;
   padding: 10px 20px;
-  margin-top: 25%;
+  margin-top: 30%;
 
   h2 {
     font-size: 20px;
