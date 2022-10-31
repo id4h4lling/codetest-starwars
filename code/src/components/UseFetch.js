@@ -5,7 +5,6 @@ export const useFetch = (url) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    console.log(cache);
     if (cache[url]) {
       setData(cache[url]);
       return;
