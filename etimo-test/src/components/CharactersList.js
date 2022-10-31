@@ -7,7 +7,7 @@ import {
   Header,
   CharactersContainer,
 } from "../theme/CharactersListStyle";
-import { useFetch } from "./useFetch";
+import { useFetch } from "./UseFetch";
 
 export const CharactersList = () => {
   const characters = useFetch("https://swapi.dev/api/people/");
