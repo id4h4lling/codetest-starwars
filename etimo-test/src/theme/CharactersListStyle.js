@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import background from "../images/background-star-wars.jpg";
 
+const devices = {
+  mobile: "(min-width: 375px)",
+  tablet: "(min-width: 768px)",
+  desktop: "(min-width: 1025px)",
+};
+
 export const Container = styled.div`
   background-image: url(${background});
   width: 100vw;
@@ -11,7 +17,6 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
 `;
 export const Header = styled.div`
@@ -21,7 +26,7 @@ export const Header = styled.div`
 
   h2 {
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     text-shadow: 2px 2px black;
     margin-bottom: 6px;
   }
@@ -36,11 +41,10 @@ export const Header = styled.div`
 export const CharactersContainer = styled.div`
   background: rgba(0, 0, 0, 0.5);
   width: 375px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   justify-content: space-between;
-  margin: 12rem;
+  margin: 10rem;
   border-radius: 10px;
 
   a {
@@ -51,6 +55,18 @@ export const CharactersContainer = styled.div`
     text-decoration: none;
     &:hover {
       color: dodgerblue;
+    }
+  }
+  @media ${devices.desktop} {
+    width: 785px;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 15rem;
+    h1 {
+      font-size: 30px;
+    }
+
+    p {
+      font-size: 20px;
     }
   }
 `;
