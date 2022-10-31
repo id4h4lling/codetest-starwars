@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 
-import { useFetch } from "./UseFetch";
+import { useFetch } from "./useFetch";
 import {
   Container,
   DetailContainer,

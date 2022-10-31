@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 const cache = {};
 export const useFetch = (url) => {
   const [data, setData] = useState(null);
-
+  //added comment
   useEffect(() => {
     console.log(cache);
     if (cache[url]) {
